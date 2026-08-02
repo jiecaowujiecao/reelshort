@@ -22,7 +22,7 @@ export const appConfig = {
    * Enlace universal de descarga (smart link recomendado).
    * 当下面的 iOS / Android 链接为空时，会使用这个。
    */
-  downloadUrl: "https://example.com/descargar",
+  downloadUrl: "https://heartcompan.com/2a8IqqWBiNrD",
 
   /** App Store 链接（iOS）。留空则使用 downloadUrl。 */
   iosUrl: "",
