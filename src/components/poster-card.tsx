@@ -1,5 +1,5 @@
 import { Play } from "lucide-react";
-import { goToDownload } from "@/config/app-config";
+import { trackDownload } from "@/lib/track-download";
 
 export type Show = {
   title: string;
@@ -12,7 +12,7 @@ export function PosterCard({ show, eager = false }: { show: Show; eager?: boolea
   return (
     <button
       type="button"
-      onClick={() => goToDownload()}
+      onClick={() => trackDownload()}
       className="group w-full text-left"
       aria-label={`Ver ${show.title} en la app`}
     >

@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Play, Star, Download, ChevronRight, Flame } from "lucide-react";
 import { MobileShell } from "@/components/mobile-shell";
 import { PosterCard, type Show } from "@/components/poster-card";
-import { appConfig, goToDownload } from "@/config/app-config";
+import { appConfig } from "@/config/app-config";
+import { trackDownload } from "@/lib/track-download";
 const logoUrl = "/logo.png";
 import poster1 from "@/assets/poster-1.webp";
 import poster2 from "@/assets/poster-2.webp";
@@ -132,7 +133,7 @@ function Index() {
       <header className="sticky top-0 z-30 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border bg-background/90 px-4 py-3 backdrop-blur">
         <button
           type="button"
-          onClick={() => goToDownload()}
+          onClick={() => trackDownload()}
           className="flex min-w-0 items-center gap-2"
         >
           <img
@@ -149,7 +150,7 @@ function Index() {
         </button>
         <button
           type="button"
-          onClick={() => goToDownload()}
+          onClick={() => trackDownload()}
           className="flex shrink-0 items-center gap-1.5 rounded-full bg-[image:var(--gradient-brand)] px-4 py-2 text-[13px] font-bold text-primary-foreground"
         >
           <Download className="size-4" /> Descargar app
@@ -180,7 +181,7 @@ function Index() {
           </p>
           <button
             type="button"
-            onClick={() => goToDownload()}
+            onClick={() => trackDownload()}
             className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-brand)] py-3.5 text-[15px] font-bold text-primary-foreground"
           >
             <Play className="size-4 fill-current" /> Ver capítulo 1 gratis
@@ -193,7 +194,7 @@ function Index() {
           <button
             key={c}
             type="button"
-            onClick={() => goToDownload()}
+            onClick={() => trackDownload()}
             className={`shrink-0 rounded-full px-3.5 py-1.5 text-[13px] font-semibold ${
               i === 0 ? "bg-foreground text-background" : "bg-secondary text-secondary-foreground"
             }`}
@@ -239,14 +240,14 @@ function Index() {
         <div className="mt-4 flex flex-col gap-2">
           <button
             type="button"
-            onClick={() => goToDownload("ios")}
+            onClick={() => trackDownload("ios")}
             className="flex items-center justify-center gap-2 rounded-full bg-foreground py-3 text-sm font-bold text-background"
           >
             <Download className="size-4" /> Descargar en App Store
           </button>
           <button
             type="button"
-            onClick={() => goToDownload("android")}
+            onClick={() => trackDownload("android")}
             className="flex items-center justify-center gap-2 rounded-full border border-border py-3 text-sm font-bold"
           >
             <Download className="size-4" /> Descargar en Google Play
@@ -257,7 +258,7 @@ function Index() {
       <footer className="mt-10 px-4 text-center text-[11px] leading-relaxed text-muted-foreground">
         <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
           {["Sobre nosotros", "Términos", "Privacidad", "Contacto"].map((l) => (
-            <button key={l} type="button" onClick={() => goToDownload()} className="underline-offset-2 hover:underline">
+            <button key={l} type="button" onClick={() => trackDownload()} className="underline-offset-2 hover:underline">
               {l}
             </button>
           ))}
@@ -270,7 +271,7 @@ function Index() {
       <div className="fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-[480px] border-t border-border bg-background/95 px-4 py-3 backdrop-blur">
         <button
           type="button"
-          onClick={() => goToDownload()}
+          onClick={() => trackDownload()}
           className="flex w-full items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-brand)] py-3.5 text-[15px] font-bold text-primary-foreground"
         >
           <Download className="size-4" /> Descargar {appConfig.brandName} gratis
@@ -293,7 +294,7 @@ function Section({
     <section className="mt-7">
       <button
         type="button"
-        onClick={() => goToDownload()}
+        onClick={() => trackDownload()}
         className="grid w-full grid-cols-[minmax(0,1fr)_auto] items-end gap-3 px-4 pb-3 text-left"
       >
         <div className="min-w-0">

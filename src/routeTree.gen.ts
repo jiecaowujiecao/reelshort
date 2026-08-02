@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicFbEventRouteImport } from './routes/api/public/fb-event'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicFbEventRoute = ApiPublicFbEventRouteImport.update({
+  id: '/api/public/fb-event',
+  path: '/api/public/fb-event',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/public/fb-event': typeof ApiPublicFbEventRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/public/fb-event': typeof ApiPublicFbEventRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/public/fb-event': typeof ApiPublicFbEventRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/public/fb-event'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/public/fb-event'
+  id: '__root__' | '/' | '/api/public/fb-event'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPublicFbEventRoute: typeof ApiPublicFbEventRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/fb-event': {
+      id: '/api/public/fb-event'
+      path: '/api/public/fb-event'
+      fullPath: '/api/public/fb-event'
+      preLoaderRoute: typeof ApiPublicFbEventRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPublicFbEventRoute: ApiPublicFbEventRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
