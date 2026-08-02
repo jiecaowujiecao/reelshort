@@ -3,7 +3,7 @@ import { Play, Star, Download, ChevronRight, Flame } from "lucide-react";
 import { MobileShell } from "@/components/mobile-shell";
 import { PosterCard, type Show } from "@/components/poster-card";
 import { appConfig, goToDownload } from "@/config/app-config";
-import logoAsset from "@/assets/logo.png.asset.json";
+const logoUrl = "/logo.png";
 import poster1 from "@/assets/poster-1.webp";
 import poster2 from "@/assets/poster-2.webp";
 import poster3 from "@/assets/poster-3.webp";
@@ -136,7 +136,7 @@ function Index() {
           className="flex min-w-0 items-center gap-2"
         >
           <img
-            src={logoAsset.url}
+            src={logoUrl}
             alt={`Logotipo de ${appConfig.brandName}`}
             width={32}
             height={32}
